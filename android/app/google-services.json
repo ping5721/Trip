@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "417259601755",
+    "firebase_url": "https://travel-app-dbeff.firebaseio.com",
+    "project_id": "travel-app-dbeff",
+    "storage_bucket": "travel-app-dbeff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417259601755:android:ab980da50725f5efa6647e",
+        "android_client_info": {
+          "package_name": "com.example.TripApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417259601755-ubdbd431l2fo2tje2hkfc18up7pnjh0m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtRp-L3Y0sg9ugEB3MkvWOK7zhUWsWm1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417259601755-ubdbd431l2fo2tje2hkfc18up7pnjh0m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -72,7 +72,7 @@ class _HomepageState extends State<Homepage> {
                     alignment: Alignment.centerLeft,
                     padding: EdgeInsets.only(left: 20),
                     child: Text(
-                      "Weekend Vacation",
+                      "Explore new places",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                     ),
