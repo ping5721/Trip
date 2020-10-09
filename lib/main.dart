@@ -1,11 +1,11 @@
-
-import 'package:TripApp/widgets/emailSignin.dart';
+import 'package:TripApp/services/emailservice.dart';
 import 'package:TripApp/widgets/facebookSignin.dart';
 import 'package:TripApp/widgets/googleSignin.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,6 +49,9 @@ class Loginscreen extends StatefulWidget {
 
 class _LoginscreenState extends State<Loginscreen> {
   FirebaseAuth auth = FirebaseAuth.instance;
+  String email;
+  String password;
+  final _formkey = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
@@ -72,8 +75,24 @@ class _LoginscreenState extends State<Loginscreen> {
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(),
                     shape: BoxShape.rectangle),
-                child: TextFormField(
-                  decoration: InputDecoration(border: InputBorder.none),
+                child: Form(
+                  key: _formkey,
+                  child: TextFormField(
+                    validator: (text) {
+                      if (text.isEmpty) return 'Press enter valid email';
+                      if (!text.contains('@')) return 'Invalid email';
+                      return null;
+                    },
+                    onSaved: (text) {
+                      setState(
+                        () {
+                          email = text;
+                          print(email);
+                        },
+                      );
+                    },
+                    decoration: InputDecoration(border: InputBorder.none),
+                  ),
                 ),
               ),
               Text('Password'),
@@ -85,10 +104,30 @@ class _LoginscreenState extends State<Loginscreen> {
                     border: Border.all(),
                     shape: BoxShape.rectangle),
                 child: TextFormField(
+                  onSaved: (text) {
+                    setState(() {
+                      password = text;
+                    });
+                  },
                   decoration: InputDecoration(border: InputBorder.none),
                 ),
               ),
-              Container(width: 300, child: buildButtonEmail()),
+              Container(
+                width: 300,
+                child: Container(
+                    child: SignInButtonBuilder(
+                  key: ValueKey("Email"),
+                  text: 'Sign in with Email',
+                  icon: Icons.email,
+                  backgroundColor: Colors.grey[700],
+                  onPressed: () {
+                    if (_formkey.currentState.validate()) {
+                      _formkey.currentState.save();
+                      signup(email, password);
+                    }
+                  },
+                )),
+              ),
               Container(width: 300, child: buildButtonFacebook()),
               Container(width: 300, child: buildButtonGoogle()),
             ],
