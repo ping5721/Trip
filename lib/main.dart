@@ -1,4 +1,4 @@
-import 'package:TripApp/screen/homescreen.dart';
+
 import 'package:TripApp/widgets/emailSignin.dart';
 import 'package:TripApp/widgets/facebookSignin.dart';
 import 'package:TripApp/widgets/googleSignin.dart';
