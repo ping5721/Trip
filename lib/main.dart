@@ -1,8 +1,15 @@
 import 'package:TripApp/screen/homescreen.dart';
+import 'package:TripApp/widgets/emailSignin.dart';
+import 'package:TripApp/widgets/facebookSignin.dart';
+import 'package:TripApp/widgets/googleSignin.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'package:firebase_auth/firebase_auth.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -41,41 +48,14 @@ class Loginscreen extends StatefulWidget {
 }
 
 class _LoginscreenState extends State<Loginscreen> {
-  bool _initialized = false;
-  bool _error = false;
-
-  // Define an async function to initialize FlutterFire
-  void initializeFlutterFire() async {
-    try {
-      // Wait for Firebase to initialize and set `_initialized` state to true
-      await Firebase.initializeApp();
-      setState(() {
-        _initialized = true;
-      });
-    } catch (e) {
-      // Set `_error` state to true if Firebase initialization fails
-      setState(() {
-        _error = true;
-      });
-    }
-  }
-
+  FirebaseAuth auth = FirebaseAuth.instance;
   @override
   void initState() {
-    initializeFlutterFire();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_error) {
-      return null;
-    }
-
-    if (!_initialized) {
-      return CircularProgressIndicator();
-    }
-
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -93,8 +73,7 @@ class _LoginscreenState extends State<Loginscreen> {
                     border: Border.all(),
                     shape: BoxShape.rectangle),
                 child: TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'asdsad', border: InputBorder.none),
+                  decoration: InputDecoration(border: InputBorder.none),
                 ),
               ),
               Text('Password'),
@@ -106,37 +85,12 @@ class _LoginscreenState extends State<Loginscreen> {
                     border: Border.all(),
                     shape: BoxShape.rectangle),
                 child: TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'asdsad', border: InputBorder.none),
+                  decoration: InputDecoration(border: InputBorder.none),
                 ),
               ),
-              Container(
-                width: 300,
-                child: RaisedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => (Homepage()),
-                        ));
-                  },
-                  child: Text("Login"),
-                ),
-              ),
-              Container(
-                width: 300,
-                child: RaisedButton(
-                  onPressed: null,
-                  child: Text("Login with Facebook"),
-                ),
-              ),
-              Container(
-                width: 300,
-                child: RaisedButton(
-                  onPressed: null,
-                  child: Text("Login with LINE"),
-                ),
-              ),
+              Container(width: 300, child: buildButtonEmail()),
+              Container(width: 300, child: buildButtonFacebook()),
+              Container(width: 300, child: buildButtonGoogle()),
             ],
           ),
         ),
