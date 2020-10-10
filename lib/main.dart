@@ -1,3 +1,4 @@
+import 'package:TripApp/screen/homescreen.dart';
 import 'package:TripApp/services/emailservice.dart';
 import 'package:TripApp/widgets/facebookSignin.dart';
 import 'package:TripApp/widgets/googleSignin.dart';
@@ -67,49 +68,55 @@ class _LoginscreenState extends State<Loginscreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Username'),
-              Container(
-                width: 300,
-                height: 40,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(),
-                    shape: BoxShape.rectangle),
-                child: Form(
-                  key: _formkey,
-                  child: TextFormField(
-                    validator: (text) {
-                      if (text.isEmpty) return 'Press enter valid email';
-                      if (!text.contains('@')) return 'Invalid email';
-                      return null;
-                    },
-                    onSaved: (text) {
-                      setState(
-                        () {
-                          email = text;
-                          print(email);
+              Form(
+                key: _formkey,
+                child: Column(
+                  children: [
+                    Text('Username'),
+                    Container(
+                      decoration: BoxDecoration(border: Border.all(width: 1)),
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: MediaQuery.of(context).size.width * 0.5 * 0.2,
+                      child: TextFormField(
+                        validator: (text) {
+                          if (text.isEmpty) return 'Press enter valid email';
+                          if (!text.contains('@')) return 'Invalid email';
+                          return null;
                         },
-                      );
-                    },
-                    decoration: InputDecoration(border: InputBorder.none),
-                  ),
-                ),
-              ),
-              Text('Password'),
-              Container(
-                width: 300,
-                height: 40,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(),
-                    shape: BoxShape.rectangle),
-                child: TextFormField(
-                  onSaved: (text) {
-                    setState(() {
-                      password = text;
-                    });
-                  },
-                  decoration: InputDecoration(border: InputBorder.none),
+                        onSaved: (text) {
+                          setState(
+                            () {
+                              email = text;
+                            },
+                          );
+                        },
+                        decoration: InputDecoration(border: InputBorder.none),
+                      ),
+                    ),
+                    Text('Password'),
+                    Container(
+                      decoration: BoxDecoration(border: Border.all(width: 1)),
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: MediaQuery.of(context).size.width * 0.5 * 0.2,
+                      child: TextFormField(
+                        obscureText: true,
+                        validator: (text) {
+                          if (text.length < 6)
+                            return 'Password must contain at least 6 characters';
+
+                          return null;
+                        },
+                        onSaved: (text) {
+                          setState(
+                            () {
+                              password = text;
+                            },
+                          );
+                        },
+                        decoration: InputDecoration(border: InputBorder.none),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Container(
@@ -123,7 +130,9 @@ class _LoginscreenState extends State<Loginscreen> {
                   onPressed: () {
                     if (_formkey.currentState.validate()) {
                       _formkey.currentState.save();
-                      signup(email, password);
+                      signup(email, password).whenComplete(() => Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Homepage())));
                     }
                   },
                 )),
