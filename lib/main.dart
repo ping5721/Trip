@@ -1,8 +1,6 @@
-import 'package:TripApp/widgets/facebookbutton.dart';
-import 'package:TripApp/widgets/googlebutton.dart';
+import 'package:TripApp/screen/loginscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,43 +31,6 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Loginscreen(),
-    );
-  }
-}
-
-class Loginscreen extends StatefulWidget {
-  const Loginscreen({Key key}) : super(key: key);
-
-  @override
-  _LoginscreenState createState() => _LoginscreenState();
-}
-
-class _LoginscreenState extends State<Loginscreen> {
-  FirebaseAuth auth = FirebaseAuth.instance;
-  String email;
-  String password;
-  final _formkey = GlobalKey<FormState>();
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(width: 300, child: buildButtonFacebook()),
-              Container(width: 300, child: buildButtonGoogle()),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
