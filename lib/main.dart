@@ -1,12 +1,8 @@
-import 'package:TripApp/screen/homescreen.dart';
-import 'package:TripApp/services/emailservice.dart';
-import 'package:TripApp/widgets/facebookSignin.dart';
-import 'package:TripApp/widgets/googleSignin.dart';
+import 'package:TripApp/widgets/facebookbutton.dart';
+import 'package:TripApp/widgets/googlebutton.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-// ignore: unused_import
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,75 +64,6 @@ class _LoginscreenState extends State<Loginscreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Form(
-                key: _formkey,
-                child: Column(
-                  children: [
-                    Text('Username'),
-                    Container(
-                      decoration: BoxDecoration(border: Border.all(width: 1)),
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      height: MediaQuery.of(context).size.width * 0.5 * 0.2,
-                      child: TextFormField(
-                        validator: (text) {
-                          if (text.isEmpty) return 'Press enter valid email';
-                          if (!text.contains('@')) return 'Invalid email';
-                          return null;
-                        },
-                        onSaved: (text) {
-                          setState(
-                            () {
-                              email = text;
-                            },
-                          );
-                        },
-                        decoration: InputDecoration(border: InputBorder.none),
-                      ),
-                    ),
-                    Text('Password'),
-                    Container(
-                      decoration: BoxDecoration(border: Border.all(width: 1)),
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      height: MediaQuery.of(context).size.width * 0.5 * 0.2,
-                      child: TextFormField(
-                        obscureText: true,
-                        validator: (text) {
-                          if (text.length < 6)
-                            return 'Password must contain at least 6 characters';
-
-                          return null;
-                        },
-                        onSaved: (text) {
-                          setState(
-                            () {
-                              password = text;
-                            },
-                          );
-                        },
-                        decoration: InputDecoration(border: InputBorder.none),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: 300,
-                child: Container(
-                    child: SignInButtonBuilder(
-                  key: ValueKey("Email"),
-                  text: 'Sign in with Email',
-                  icon: Icons.email,
-                  backgroundColor: Colors.grey[700],
-                  onPressed: () {
-                    if (_formkey.currentState.validate()) {
-                      _formkey.currentState.save();
-                      signup(email, password).whenComplete(() => Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Homepage())));
-                    }
-                  },
-                )),
-              ),
               Container(width: 300, child: buildButtonFacebook()),
               Container(width: 300, child: buildButtonGoogle()),
             ],

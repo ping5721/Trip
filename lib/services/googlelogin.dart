@@ -1,19 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn(scopes: [
   'https://www.googleapis.com/auth/contacts.readonly',
 ]);
-
-Widget buildButtonGoogle() {
-  return SignInButton(Buttons.Google, onPressed: () {signInWithGoogle();});
-}
-
-Future<String> signInWithGoogle() async {
+Future signInWithGoogle() async {
   await Firebase.initializeApp();
 
   final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
@@ -44,9 +37,8 @@ Future<String> signInWithGoogle() async {
   return null;
 }
 
-Future<void> signOutGoogle() async {
+Future signOutGoogle() async {
   await googleSignIn.signOut();
 
   print("User Signed Out");
 }
-
