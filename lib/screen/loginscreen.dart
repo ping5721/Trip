@@ -1,3 +1,4 @@
+import 'package:TripApp/services/linelogin.dart';
 import 'package:TripApp/widgets/facebookbutton.dart';
 import 'package:TripApp/widgets/googlebutton.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,9 @@ class _LoginscreenState extends State<Loginscreen> {
             children: [
               Container(width: 300, child: buildButtonFacebook()),
               Container(width: 300, child: BuildbuttonGoogle()),
-              RaisedButton(onPressed: () {})
+              RaisedButton(onPressed: () {
+                loginwithline();
+              })
             ],
           ),
         ),
