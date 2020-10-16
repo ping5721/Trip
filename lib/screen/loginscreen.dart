@@ -1,4 +1,3 @@
-import 'package:TripApp/services/linelogin.dart';
 import 'package:TripApp/widgets/facebookbutton.dart';
 import 'package:TripApp/widgets/googlebutton.dart';
 import 'package:TripApp/widgets/linebutton.dart';
