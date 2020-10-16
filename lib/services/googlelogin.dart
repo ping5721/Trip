@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn(scopes: [
@@ -13,8 +12,6 @@ Future signInWithGoogle() async {
   final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
   final GoogleSignInAuthentication googleSignInAuthentication =
       await googleSignInAccount.authentication;
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setString('email', 'useremail@gmail.com');
 
   final AuthCredential credential = GoogleAuthProvider.credential(
     accessToken: googleSignInAuthentication.accessToken,
@@ -38,7 +35,6 @@ Future signInWithGoogle() async {
 
 Future signOutGoogle() async {
   await googleSignIn.signOut();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.remove('email');
+
   print("User Signed Out");
 }
