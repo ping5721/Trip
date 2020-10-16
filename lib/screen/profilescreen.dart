@@ -7,8 +7,17 @@ class Profilescreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.blue,
-      body: Center(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 30,
+            ),
+            Text('Possawat Wongwikrom')
+          ],
+        ),
+      ),
     ));
   }
 }

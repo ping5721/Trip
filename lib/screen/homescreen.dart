@@ -62,7 +62,6 @@ class _HomepageState extends State<Homepage> {
                       ),
                     ],
                   ),
-                  DataRow(),
                   Container(
                     alignment: Alignment.centerLeft,
                     padding: EdgeInsets.only(left: 20),
@@ -72,7 +71,6 @@ class _HomepageState extends State<Homepage> {
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                     ),
                   ),
-                  DataRow(),
                   Container(
                     alignment: Alignment.centerLeft,
                     padding: EdgeInsets.only(left: 20),
@@ -82,36 +80,11 @@ class _HomepageState extends State<Homepage> {
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                     ),
                   ),
-                  DataRow(),
                   SizedBox(height: 20)
                 ],
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class DataRow extends StatefulWidget {
-  DataRow({Key key}) : super(key: key);
-
-  @override
-  _DataRowState createState() => _DataRowState();
-}
-
-class _DataRowState extends State<DataRow> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * .3,
-      child: Container(
-        margin: EdgeInsets.only(left: 15),
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[Cards(), Cards()],
         ),
       ),
     );
@@ -135,37 +108,6 @@ class _SearchboxState extends State<Searchbox> {
           border: Border.all(color: Colors.grey)),
       child: TextFormField(
         decoration: InputDecoration(),
-      ),
-    );
-  }
-}
-
-class Cards extends StatefulWidget {
-  Cards({Key key}) : super(key: key);
-  @override
-  _CardsState createState() => _CardsState();
-}
-
-class _CardsState extends State<Cards> {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-      child: Container(
-        height: MediaQuery.of(context).size.height * .2,
-        width: MediaQuery.of(context).size.width * .3,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.amber[600],
-        ),
-        child: Stack(
-          children: [
-            Align(
-              alignment: Alignment(0.7, 0.8),
-              child: Text("อบอร่อย"),
-            )
-          ],
-        ),
       ),
     );
   }

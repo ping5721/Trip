@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-Widget buildButtonFacebook() {
-  return SignInButton(Buttons.FacebookNew, onPressed: () {
-    print('facebook login');
-  });
+class FacebookButton extends StatelessWidget {
+  const FacebookButton({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SignInButton(Buttons.FacebookNew, onPressed: (){},);
+  }
 }

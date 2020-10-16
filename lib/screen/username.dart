@@ -1,26 +1,65 @@
 import 'package:flutter/material.dart';
 
+String userid;
+
 class UsernameCrate extends StatelessWidget {
   const UsernameCrate({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(),
       body: Center(
         child: Column(
           children: [
-            Text('Create username'),
-            Text('You can always change this later.'),
             Container(
-              child: TextField(),
-              width: MediaQuery.of(context).size.width * 0.5,
+              alignment: Alignment.center,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(vertical: 20),
+              child: Text(
+                'Sign up',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
-            RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/homepage');
-              },
-              child: Text('Sign up'),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 15),
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: Text(
+                'Create username',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 15),
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: Text('You can always change this later.',
+                  style: TextStyle(color: Colors.grey, fontSize: 14)),
+            ),
+            Container(
+              child: TextField(
+                onChanged: (text) {
+                  userid = text;
+                  print(userid);
+                },
+                decoration: InputDecoration(border: InputBorder.none),
+              ),
+              width: MediaQuery.of(context).size.width * 0.8,
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 30),
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: RaisedButton(
+                color: Colors.redAccent,
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/homepage');
+                },
+                child: Text('Sign up',style: TextStyle(color: Colors.white),),
+              ),
             )
           ],
         ),

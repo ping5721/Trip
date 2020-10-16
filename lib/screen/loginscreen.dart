@@ -27,8 +27,8 @@ class _LoginscreenState extends State<Loginscreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(width: 300, child: buildButtonFacebook()),
-              Container(width: 300, child: BuildbuttonGoogle()),
+              Container(width: 300, child: FacebookButton()),
+              Container(width: 300, child: GoogleButton()),
               LineButton(),
             ],
           ),
