@@ -1,4 +1,4 @@
-import 'package:TripApp/screen/trip.dart';
+import 'package:TripApp/screen/tripscreen.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -22,7 +22,12 @@ class _HomepageState extends State<Homepage> {
             Icon(Icons.save),
             Icon(Icons.search),
             Icon(Icons.alarm),
-            Icon(Icons.settings),
+            GestureDetector(
+              child: Icon(Icons.settings),
+              onTap: () {
+                Navigator.pushNamed(context, '/profile');
+              },
+            ),
           ],
         ),
       ),

@@ -1,4 +1,7 @@
+import 'package:TripApp/screen/homescreen.dart';
 import 'package:TripApp/screen/loginscreen.dart';
+import 'package:TripApp/screen/profilescreen.dart';
+import 'package:TripApp/screen/username.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,6 +31,12 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Loginscreen(),
+      routes: {
+        '/homepage': (context) => Homepage(),
+        '/profile': (context) => Profilescreen(),
+        '/login': (context) => Loginscreen(),
+        '/usernamecreate': (context) => UsernameCrate(),
+      },
     );
   }
 }
