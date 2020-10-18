@@ -10,7 +10,8 @@ class LineButton extends StatelessWidget {
       width: 300,
       child: RaisedButton(
         onPressed: () {
-          loginwithline();
+          loginwithline().whenComplete(
+              () => Navigator.pushReplacementNamed(context, '/usernamecreate'));
         },
         color: Colors.green,
         child: Text(

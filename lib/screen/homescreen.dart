@@ -13,24 +13,7 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      bottomSheet: Container(
-        height: MediaQuery.of(context).size.height * .07,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Icon(Icons.add),
-            Icon(Icons.save),
-            Icon(Icons.search),
-            Icon(Icons.alarm),
-            GestureDetector(
-              child: Icon(Icons.settings),
-              onTap: () {
-                Navigator.pushNamed(context, '/profile');
-              },
-            ),
-          ],
-        ),
-      ),
+      bottomSheet: BottomNavbar(),
       body: SafeArea(
         child: Column(
           children: [
@@ -91,23 +74,29 @@ class _HomepageState extends State<Homepage> {
   }
 }
 
-class Searchbox extends StatefulWidget {
-  Searchbox({Key key}) : super(key: key);
+class BottomNavbar extends StatelessWidget {
+  const BottomNavbar({
+    Key key,
+  }) : super(key: key);
 
-  @override
-  _SearchboxState createState() => _SearchboxState();
-}
-
-class _SearchboxState extends State<Searchbox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * .6,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: Colors.grey)),
-      child: TextFormField(
-        decoration: InputDecoration(),
+      height: MediaQuery.of(context).size.height * .07,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Icon(Icons.add),
+          Icon(Icons.save),
+          Icon(Icons.search),
+          Icon(Icons.alarm),
+          GestureDetector(
+            child: Icon(Icons.settings),
+            onTap: () {
+              Navigator.pushNamed(context, '/profile');
+            },
+          ),
+        ],
       ),
     );
   }

@@ -11,7 +11,9 @@ class GoogleButton extends StatelessWidget {
       Buttons.Google,
       onPressed: () {
         signInWithGoogle().whenComplete(
-          () => Navigator.pushReplacementNamed(context, '/usernamecreate'),
+          () {
+            Navigator.pushReplacementNamed(context, '/usernamecreate');
+          },
         );
       },
     );

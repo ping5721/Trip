@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 String userid;
+bool disableButton;
 
 class UsernameCrate extends StatelessWidget {
   const UsernameCrate({Key key}) : super(key: key);
@@ -43,9 +45,11 @@ class UsernameCrate extends StatelessWidget {
             Container(
               child: TextField(
                 onChanged: (text) {
-                  userid = text;
-                  print(userid);
+                  userid = text.toLowerCase();
                 },
+                textCapitalization: TextCapitalization.none,
+                maxLength: 10,
+                maxLines: 1,
                 decoration: InputDecoration(border: InputBorder.none),
               ),
               width: MediaQuery.of(context).size.width * 0.8,
@@ -55,10 +59,14 @@ class UsernameCrate extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.8,
               child: RaisedButton(
                 color: Colors.redAccent,
+                disabledColor: Colors.grey[300],
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/homepage');
                 },
-                child: Text('Sign up',style: TextStyle(color: Colors.white),),
+                child: Text(
+                  'Sign up',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             )
           ],
