@@ -28,7 +28,7 @@ Future main() async {
       // closer together (more dense) than on mobile platforms.
       visualDensity: VisualDensity.adaptivePlatformDensity,
     ),
-    home: email == null ? Loginscreen() : Homepage(),
+    home: email.isEmpty ?  Loginscreen():Homepage() ,
     routes: {
       '/homepage': (context) => Homepage(),
       '/profile': (context) => Profilescreen(),
