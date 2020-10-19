@@ -7,9 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  var email = prefs.getString('email');
-  print(email);
+  //SharedPreferences prefs = await SharedPreferences.getInstance();
+  //var email = prefs.getString('email');
+
   runApp(MaterialApp(
     title: 'TripApp',
     theme: ThemeData(
@@ -28,7 +28,7 @@ Future main() async {
       // closer together (more dense) than on mobile platforms.
       visualDensity: VisualDensity.adaptivePlatformDensity,
     ),
-    home: email.isEmpty ?  Loginscreen():Homepage() ,
+    home: Loginscreen(),
     routes: {
       '/homepage': (context) => Homepage(),
       '/profile': (context) => Profilescreen(),
