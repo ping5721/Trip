@@ -8,4 +8,5 @@ Future loginWithFacebook() async {
 
   final facebookLogin = FacebookLogin();
   final result = await facebookLogin.logIn(['email']);
+  await auth.signInWithCustomToken(result.accessToken.token);
 }

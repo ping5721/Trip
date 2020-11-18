@@ -82,16 +82,32 @@ class BottomNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Color(0xff56C596),
       height: MediaQuery.of(context).size.height * .07,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Icon(Icons.add),
-          Icon(Icons.save),
-          Icon(Icons.search),
-          Icon(Icons.alarm),
+          Icon(
+            Icons.home,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.search,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.add_circle_outlined,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.bookmark,
+            color: Colors.white,
+          ),
           GestureDetector(
-            child: Icon(Icons.settings),
+            child: Icon(
+              Icons.settings,
+              color: Colors.white,
+            ),
             onTap: () {
               Navigator.pushNamed(context, '/profile');
             },
